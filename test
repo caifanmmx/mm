@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+#include "conio.h"
+using namespace std;
+int main()
+{
+	char linea[100];
+	string ciudad;
+	int dias;
+	int numero;
+	ofstream fs("integradora.txt");
+	cout<<"Ingrese las ciudades que desea visitar: ";
+	cin>>numero;
+	if(numero<=20)
+	{
+	for(int i=0; i<numero;i++)
+	{
+	cout<<"Ingresa la ciudad que visitaras: ";
+	cin>>ciudad;
+	fs<<ciudad<<endl;
+	cout<<"Ingresa los dias del viaje";
+	cin>>dias;
+	fs<<dias<<endl;
+	}
+	fs.close();
+	cout<<"A continuacion aqui tiene su itinerario: "<<ciudad;
+	}
+	ifstream fe("integradora.txt");
+	if(fe.fail())
+	cerr<<"Error al abrir el archivo integradora.txt"<<endl;
+	else
+	while(!fe.eof())
+	{
+		fe.getline(linea, sizeof(linea));
+		cout<<linea<<endl;
+	}
+}
